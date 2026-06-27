@@ -139,7 +139,31 @@ body {
   border: 1px solid rgba(129,140,248,.22);
 }
 
-.world-map svg { width: 100%; height: auto; }
+.world-map {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(129,140,248,.2);
+  border-radius: 28px;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(91,95,255,.18), transparent 34%),
+    radial-gradient(circle at 24% 38%, rgba(59,130,246,.14), transparent 30%),
+    linear-gradient(180deg, rgba(19,26,46,.84), rgba(7,10,21,.78));
+  box-shadow: 0 24px 80px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter: blur(18px);
+}
+.world-map::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  opacity: .38;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 900 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23233457'%3E%3Cpath d='M95 175c42-48 126-61 191-28 31 16 51 43 87 41 30-2 55-25 86-17 38 10 44 52 83 65 45 15 86-14 125 8 42 24 24 76-17 94-51 22-112-12-166 4-58 17-94 80-157 68-56-11-58-77-112-95-43-14-90 13-129-13-42-28-28-89 9-127Z'/%3E%3Cpath d='M598 117c42-24 104-19 132 22 25 36 8 84-36 94-39 9-69-21-107-25-38-3-78 18-109-8-35-29-17-62 20-75 32-11 65 12 100-8Z'/%3E%3Cpath d='M663 348c33-18 81-8 104 21 25 33 4 72-37 76-42 4-88-23-93-58-3-16 7-30 26-39Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+.world-map svg { position: relative; z-index: 1; width: 100%; height: auto; }
 .map-dot { filter: drop-shadow(0 0 10px rgba(91,95,255,.9)); animation: pulse-dot 2.5s ease-in-out infinite; }
 .map-line { stroke-dasharray: 8 10; animation: dash 8s linear infinite; }
 
