@@ -1,0 +1,19 @@
+title: TaishanNet
+email: taishannet@example.com
+description: >-
+  TaishanNet - 专业的网络加速服务
+baseurl: ""
+url: "https://taishannet.github.io"
+github_username: taishannet
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
