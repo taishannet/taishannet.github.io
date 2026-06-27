@@ -1,0 +1,33 @@
+<header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-obsidian/70 backdrop-blur-xl" x-data="{ open: false }">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">跳转到主要内容</a>
+  <nav class="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8" aria-label="主导航">
+    <a href="{{ site.baseurl }}/" class="group flex items-center gap-3" aria-label="Taishan Net 首页">
+      <span class="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-primary font-black text-white shadow-glow"><span>泰</span></span>
+      <span class="leading-tight"><strong class="block text-base font-semibold text-white">Taishan Net</strong><span class="block text-xs text-slate-400">泰山Net</span></span>
+    </a>
+    <div class="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex">
+      <a class="nav-link" href="{{ site.baseurl }}/download/">下载</a>
+      <a class="nav-link" href="{{ site.baseurl }}/airport/">泰山机场</a>
+      <a class="nav-link" href="{{ site.baseurl }}/vpn/">泰山VPN</a>
+      <a class="nav-link" href="{{ site.baseurl }}/faq/">FAQ</a>
+      <a class="nav-link" href="{{ site.baseurl }}/blog/">博客</a>
+    </div>
+    <div class="hidden items-center gap-3 lg:flex">
+      <a class="btn-ghost" href="{{ site.baseurl }}/faq/">帮助中心</a>
+      <a class="btn-primary" href="{{ site.baseurl }}/download/">立即下载</a>
+    </div>
+    <button class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white lg:hidden" type="button" @click="open = !open" :aria-expanded="open.toString()" aria-controls="mobile-menu" aria-label="打开菜单">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="border-t border-white/10 bg-obsidian/95 px-5 py-5 backdrop-blur-xl lg:hidden" x-show="open" x-transition @click.outside="open=false">
+    <div class="grid gap-3 text-slate-300">
+      <a class="mobile-link" href="{{ site.baseurl }}/download/">下载</a>
+      <a class="mobile-link" href="{{ site.baseurl }}/airport/">泰山机场</a>
+      <a class="mobile-link" href="{{ site.baseurl }}/vpn/">泰山VPN</a>
+      <a class="mobile-link" href="{{ site.baseurl }}/faq/">FAQ</a>
+      <a class="mobile-link" href="{{ site.baseurl }}/blog/">博客</a>
+      <a class="btn-primary mt-2 justify-center" href="{{ site.baseurl }}/download/">立即下载</a>
+    </div>
+  </div>
+</header>

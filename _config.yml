@@ -1,19 +1,63 @@
-title: TaishanNet
-email: taishannet@example.com
-description: >-
-  TaishanNet - 专业的网络加速服务
+title: "Taishan Net 泰山Net"
+email: "support@taishannet.github.io"
+description: "Taishan Net（泰山Net）提供高速稳定、安全可靠的全球网络加速服务，支持 Clash、Shadowrocket、Sing-box、OpenWRT 等客户端，适合跨境办公、学习与影音加速。"
 baseurl: ""
 url: "https://taishannet.github.io"
-github_username: taishannet
-
-# Build settings
+lang: "zh-CN"
+timezone: "Asia/Shanghai"
+permalink: /blog/:title/
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
-
-# Exclude from processing
+sass:
+  sass_dir: assets/css
+  style: compressed
+collections:
+  clients:
+    output: true
+    permalink: /clients/:name/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/img/og-default.svg
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Taishan Net Team"
+      image: /assets/img/og-default.svg
+      comments: true
+  - scope:
+      path: "clients"
+    values:
+      layout: default
+      image: /assets/img/og-default.svg
+keywords:
+  - 泰山网官网
+  - 泰山官网
+  - taishan net官网
+  - taishanvpn
+  - taishan net下载
+  - taishan机场
+  - 泰山net官网
+  - 泰山vpn官网
+  - 泰山 vpn
+  - 泰山机场官网
+  - 泰山加速器
+  - 高速机场
+  - 泰山云
+  - 青山vpn官网
+  - taishan.net
+  - 泰山机场
 exclude:
   - Gemfile
   - Gemfile.lock
+  - node_modules
+  - vendor
   - README.md

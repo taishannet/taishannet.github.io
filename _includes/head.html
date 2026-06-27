@@ -1,0 +1,54 @@
+{% assign page_title = page.title | default: site.title %}
+{% assign page_description = page.description | default: site.description %}
+{% assign page_keywords = page.keywords | default: site.keywords | join: ', ' %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - 高速稳定全球网络加速{% endif %}</title>
+<meta name="description" content="{{ page_description }}">
+<meta name="keywords" content="{{ page_keywords }}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="theme-color" content="#0B1020">
+<link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/favicon.svg">
+<link rel="canonical" href="{{ site.url }}{{ site.baseurl }}{{ page.url | replace: 'index.html', '' }}">
+<link rel="manifest" href="{{ site.baseurl }}/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { obsidian: '#0B1020', panel: 'rgba(19,26,46,0.8)', muted: '#94A3B8' },
+        fontFamily: { sans: ['Inter', 'Noto Sans SC', 'system-ui', 'sans-serif'] },
+        backgroundImage: { 'gradient-primary': 'linear-gradient(135deg,#5B5FFF 0%,#6F4CFF 100%)' },
+        boxShadow: { glow: '0 24px 80px rgba(91,95,255,.28)', soft: '0 20px 60px rgba(0,0,0,.32)' },
+        borderRadius: { '4xl': '2rem' }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | replace: 'index.html', '' }}">
+<meta property="og:site_name" content="Taishan Net 泰山Net">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image | default: '/assets/img/og-default.svg' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image | default: '/assets/img/og-default.svg' }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type":"Organization","@id":"{{ site.url }}/#organization","name":"Taishan Net","alternateName":["泰山Net","泰山机场","泰山VPN"],"url":"{{ site.url }}","logo":"{{ site.url }}{{ site.baseurl }}/assets/img/og-default.svg","sameAs":["https://github.com/taishannet"]},
+    {"@type":"WebSite","@id":"{{ site.url }}/#website","url":"{{ site.url }}","name":"Taishan Net 泰山Net","description":{{ site.description | jsonify }},"publisher":{"@id":"{{ site.url }}/#organization"},"potentialAction":{"@type":"SearchAction","target":"{{ site.url }}/blog/?q={search_term_string}","query-input":"required name=search_term_string"}}
+  ]
+}
+</script>

@@ -1,0 +1,91 @@
+---
+---
+{% assign words = page.content | number_of_words %}
+{% assign minutes = words | divided_by: 260 | plus: 1 %}
+<!doctype html>
+<html lang="zh-CN" class="scroll-smooth">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="bg-obsidian text-slate-100 antialiased selection:bg-indigo-500/40 selection:text-white">
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+    <div class="site-noise" aria-hidden="true"></div>
+    <div class="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_top_left,rgba(91,95,255,.22),transparent_34%),radial-gradient(circle_at_70%_20%,rgba(59,130,246,.18),transparent_28%),linear-gradient(180deg,#0B1020_0%,#070A15_100%)]"></div>
+    {% include header.html %}
+    <main id="main" class="relative z-10 pt-28">
+      <article class="mx-auto max-w-4xl px-5 pb-20 sm:px-6 lg:px-8">
+        <nav class="mb-8 text-sm text-slate-400" aria-label="面包屑">
+          <a class="hover:text-white" href="{{ site.baseurl }}/">首页</a>
+          <span class="mx-2">/</span>
+          <a class="hover:text-white" href="{{ site.baseurl }}/blog/">博客</a>
+          <span class="mx-2">/</span>
+          <span class="text-slate-200">{{ page.title }}</span>
+        </nav>
+        <header class="glass-card p-8 md:p-10" data-aos="fade-up">
+          <div class="mb-5 flex flex-wrap items-center gap-3 text-sm text-slate-400">
+            <span class="rounded-full border border-indigo-400/30 bg-indigo-500/10 px-3 py-1 text-indigo-200">{{ page.category | default: page.categories[0] | default: '网络知识' }}</span>
+            <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+            <span>约 {{ minutes }} 分钟阅读</span>
+            <span>更新于 {{ page.updated | default: page.date | date: "%Y-%m-%d" }}</span>
+          </div>
+          <h1 class="text-3xl font-semibold tracking-tight text-white md:text-5xl">{{ page.title }}</h1>
+          {% if page.description %}<p class="mt-5 text-lg leading-8 text-slate-300">{{ page.description }}</p>{% endif %}
+          <div class="mt-7 flex items-center gap-4 border-t border-white/10 pt-6">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-primary text-lg font-bold">泰</div>
+            <div>
+              <p class="font-medium text-white">{{ page.author | default: 'Taishan Net Team' }}</p>
+              <p class="text-sm text-slate-400">专注高速机场、泰山 vpn 与客户端教程</p>
+            </div>
+          </div>
+        </header>
+        <div class="mt-8 grid gap-8 lg:grid-cols-[220px_1fr]">
+          <aside class="hidden lg:block">
+            <div class="sticky top-28 glass-card p-5">
+              <p class="mb-3 text-sm font-semibold text-white">目录</p>
+              <div id="toc" class="toc text-sm text-slate-400"></div>
+            </div>
+          </aside>
+          <div class="min-w-0">
+            <div class="prose prose-invert prose-indigo max-w-none prose-headings:scroll-mt-28 prose-a:text-indigo-300 prose-strong:text-white">
+              {{ content }}
+            </div>
+            <section class="mt-12 glass-card p-6" aria-labelledby="post-faq-title">
+              <h2 id="post-faq-title" class="text-2xl font-semibold text-white">常见问题</h2>
+              <div class="mt-5 space-y-4">
+                <details class="faq-item" open><summary>在哪里获取 taishan net下载入口？</summary><p>请访问下载页选择 Windows、macOS、Android、iOS、OpenWRT、Clash 或 Shadowrocket 客户端，并按教程导入订阅。</p></details>
+                <details class="faq-item"><summary>泰山机场和泰山VPN有什么区别？</summary><p>泰山机场偏向订阅节点与多客户端生态，泰山VPN偏向一键加速体验；两者都服务于稳定、安全、低延迟的网络连接。</p></details>
+              </div>
+            </section>
+            <section class="mt-10 rounded-3xl border border-indigo-400/25 bg-gradient-to-br from-indigo-500/20 to-blue-500/10 p-8 text-center shadow-glow">
+              <h2 class="text-2xl font-semibold text-white">开始使用 Taishan Net</h2>
+              <p class="mx-auto mt-3 max-w-2xl text-slate-300">访问泰山net官网，下载客户端并导入订阅，几分钟内完成高速机场配置。</p>
+              <a class="btn-primary mt-6 inline-flex" href="{{ site.baseurl }}/download/">立即下载</a>
+            </section>
+            <nav class="mt-10 grid gap-4 sm:grid-cols-2" aria-label="文章导航">
+              {% if page.previous %}<a class="glass-card p-5 hover:border-indigo-300/50" href="{{ site.baseurl }}{{ page.previous.url }}"><span class="text-sm text-slate-400">上一篇</span><strong class="mt-1 block text-white">{{ page.previous.title }}</strong></a>{% endif %}
+              {% if page.next %}<a class="glass-card p-5 text-right hover:border-indigo-300/50" href="{{ site.baseurl }}{{ page.next.url }}"><span class="text-sm text-slate-400">下一篇</span><strong class="mt-1 block text-white">{{ page.next.title }}</strong></a>{% endif %}
+            </nav>
+            <section class="mt-10 glass-card p-6">
+              <h2 class="text-xl font-semibold text-white">相关文章</h2>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" | limit: 2 %}
+                {% for post in related_posts %}<a class="rounded-2xl border border-white/10 bg-white/[.03] p-4 hover:border-indigo-300/50" href="{{ site.baseurl }}{{ post.url }}"><span class="text-sm text-slate-400">{{ post.date | date: "%Y-%m-%d" }}</span><strong class="mt-1 block text-white">{{ post.title }}</strong></a>{% endfor %}
+              </div>
+            </section>
+            <section class="mt-10 glass-card p-6">
+              <h2 class="text-xl font-semibold text-white">评论区</h2>
+              <p class="mt-3 text-slate-400">评论系统将在 GitHub Pages 部署后接入。你也可以通过 Telegram 或 GitHub 向 Taishan Net 团队反馈问题。</p>
+            </section>
+          </div>
+        </div>
+      </article>
+    </main>
+    {% include footer.html %}
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ page.title | jsonify }},"description":{{ page.description | default: site.description | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","dateModified":"{{ page.updated | default: page.date | date_to_xmlschema }}","author":{"@type":"Organization","name":"Taishan Net"},"publisher":{"@type":"Organization","name":"Taishan Net","url":"{{ site.url }}"},"mainEntityOfPage":"{{ site.url }}{{ page.url }}"}</script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="{{ site.baseurl }}/assets/js/main.js"></script>
+  </body>
+</html>

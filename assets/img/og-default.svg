@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#0B1020"/>
+      <stop offset="100%" stop-color="#070A15"/>
+    </linearGradient>
+    <linearGradient id="glow1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(91,95,255,.25)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="200" r="300" fill="url(#glow1)"/>
+  <text x="600" y="300" text-anchor="middle" fill="white" font-size="80" font-weight="900" font-family="Inter,Noto Sans SC,sans-serif">Taishan Net</text>
+  <text x="600" y="360" text-anchor="middle" fill="#B8C3FF" font-size="36" font-weight="500" font-family="Inter,Noto Sans SC,sans-serif">泰山Net — 高速稳定 · 全球互联 · 安全加速</text>
+  <rect x="480" y="420" width="240" height="60" rx="30" fill="url(#g)"/>
+  <text x="600" y="458" text-anchor="middle" fill="white" font-size="22" font-weight="700" font-family="Inter,sans-serif">立即下载</text>
+</svg>
