@@ -12,6 +12,7 @@ kramdown:
   hard_wrap: false
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
 sass:
   sass_dir: assets/css
   style: compressed
